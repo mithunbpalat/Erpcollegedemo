@@ -1,0 +1,99 @@
+<title>View Profile And Book Request</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <div class="container-fluid">
+        <h1 style="text-align: center;font-size: 50px;color:black;">ERP COLLEGE MANAGEMENT</h1><br>
+        <h1 style="text-align: center;font-size: 40px;color:black;">{{college.collegename | uppercase}}</h1><br>
+        <ul class="nav nav-pills nav-justified">
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/collegeadminprofile/{{college.cid}}">View Profile And Book Request</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/caaddstudent/{{college.cid}}">Add Student</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/caaddteacher/{{college.cid}}">Add Teacher</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/caaddlibrarian/{{college.cid}}">Add Librarian</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/catimetable/{{college.cid}}">Add Timetable</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/caevent/{{college.cid}}">Add Event</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/collegeadminlogin">Logout</a>
+          </li>
+        </ul><br><br><br>
+        <h3 style="color:maroon;">College Admin {{college.adminusername}} Logged in...</h3>
+        <div style="padding:3% 3%;margin: auto;background-color:lightgoldenrodyellow;">
+          <div class="row">
+            <div class="col-sm">
+            <div style="margin: auto;border: 2px solid violet;border-radius: 5px;padding: 5px 26px;">
+            <h1 class="text-center">College Admin Details</h1><br>
+            <div class="row">
+                <div class="col-sm"></div>
+                <div class="col-sm">
+                    <img src="assets/icon-g81b0c3767_1920.png" style="width:200px; height:200px;">
+                </div>
+                <div class="col-sm"></div>
+            </div><br>
+            <table class="table table-dark table-responsive-sm">
+              <tr>
+                <th>Id </th>
+                <th>{{college.cid}}</th>
+              </tr>    
+              <tr>
+                <td>College Name</td>
+                <td>{{college.collegename}}</td>
+              </tr>
+              <tr>
+                <td>Admin Username</td>
+                <td>{{college.adminusername}}</td>
+              </tr>
+              <tr>
+                <td>Admin Password</td>
+                <td>{{college.adminpassword}}</td>
+              </tr>
+              <tr>
+                <td>Address</td>
+                <td>{{college.collegename}}</td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td>{{college.email}}</td>
+              </tr>
+              <tr>
+                <td>Phonenumber</td>
+                <td>{{college.phonenumber}}</td>
+              </tr>
+          </table><br>
+            </div><br><br>
+            </div>
+            <div class="col-sm">
+            <h1 class="text-center">Book Requests</h1><br>
+            <button class="btn btn-info " (click)="getBook(college.collegename)">GET BOOKS</button><br>
+            <table class="table table-dark table-responsive-sm">
+                <tr>
+                  <th>Book Id</th>
+                  <th>Book Request</th>
+                </tr>    
+                <tr *ngFor="let book of books">
+                  <td>{{book.bid}}</td>
+                  <td>{{book.requestbook}}</td>
+                </tr>
+            </table><br>
+            </div>
+            </div>
+        </div>
+    </div>

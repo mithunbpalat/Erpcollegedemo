@@ -1,0 +1,23 @@
+export class Student{
+    constructor(
+        admno:number,
+        collegename:string,
+        name:string,
+        address:string,
+        fathername:string,
+        mothername:string,
+        course:string,
+        stdyear:string,
+        dateadmitted:string,
+        courseduration:string,
+        totalfees:string,
+        feespaid:string,
+        balancefees:string,
+        dateofcoursecompletion:string,
+        phone:string,
+        studusername:string,
+        studpassword:string,
+        email:string,
+        status:number
+        ){}
+    }

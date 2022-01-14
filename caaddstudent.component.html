@@ -1,0 +1,251 @@
+<title>Add Student</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <div class="container-fluid">
+        <h1 style="text-align: center;font-size: 50px;color:black;">ERP COLLEGE MANAGEMENT</h1><br>
+        <h1 style="text-align: center;font-size: 40px;color:black;">{{college.collegename | uppercase}}</h1><br>
+        <ul class="nav nav-pills nav-justified">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/collegeadminprofile/{{college.cid}}">View Profile And Book Request</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/caaddstudent/{{college.cid}}">Add Student</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/caaddteacher/{{college.cid}}">Add Teacher</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/caaddlibrarian/{{college.cid}}">Add Librarian</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/catimetable/{{college.cid}}">Add Timetable</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/caevent/{{college.cid}}">Add Event</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/collegeadminlogin">Logout</a>
+          </li>
+        </ul><br><br><br>
+        <h3 style="color:maroon;">College Admin {{college.adminusername}} Logged in...</h3>
+        <div style="padding:3% 3%;margin: auto;background-color:lightgoldenrodyellow;">
+        <div class="container-fluid">
+          <h1 style="text-align: center;">STUDENT REGISTRATION</h1><br>
+            <div style="margin:auto;border:2px solid white;border-radius:5px;padding: 10px;">
+              <h3 style="text-align: center;">Student Registration(All information required*)</h3>
+                <form action="#" post="method">
+                    <div class="row">
+                    <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="collegename">College Name:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="student.collegename" placeholder="Enter College Name" id="collegename" name="collegename" required>
+                      </div><br>
+                  <div class="form-group">
+                    <label for="admno">Admission Number:</label><br>
+                    <input type="number" class="form-control" [(ngModel)]="student.admno" placeholder="Enter Admission Number while updating Only" id="admno" name="admno">
+                  </div><br>  
+                    <div class="form-group">
+                        <label for="name">Student Name:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="student.name" placeholder="Enter Student Name" id="name" name="name" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="address">Student Address:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="student.address" placeholder="Enter Student Address" id="address" name="address" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="fathername">Father Name:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="student.fathername" placeholder="Enter Father Name" id="fathername" name="fathername" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="mothername">Mother Name:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="student.mothername" placeholder="Enter Mother Name" id="mothername" name="mothername" required>
+                      </div><br>
+                      </div>
+
+
+                      <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="course">Course Admitted:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="student.course" placeholder="Enter Course Admitted For" id="course" name="course" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="stdyear">Standard/Year:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="student.stdyear" placeholder="Enter Standard/Year" id="stdyear" name="stdyear" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="dateadmitted">Date Of Admission:</label><br>
+                        <input type="date" class="form-control" [(ngModel)]="student.dateadmitted" placeholder="Enter Date Of Admission" id="dateadmitted" name="dateadmitted" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="courseduration">Course Duration:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="student.courseduration" placeholder="Enter Course Duration" id="courseduration" name="courseduration" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="totalfees">Total Course Fees:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="student.totalfees" placeholder="Enter Total Course Fees" id="totalfees" name="totalfees" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="feespaid">Fees Paid:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="student.feespaid" placeholder="Enter Fees Paid" id="feespaid" name="feespaid" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="balancefees">Balance Fees:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="student.balancefees" placeholder="Enter Balance Fees to be Paid" id="balancefees" name="balancefees" required>
+                      </div><br>
+                      </div>
+
+
+                      <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="dateofcoursecompletion">Date Of Course Completion:</label><br>
+                        <input type="date" class="form-control" [(ngModel)]="student.dateofcoursecompletion" placeholder="Enter Date Of Course Completion" id="dateofcoursecompletion" name="dateofcoursecompletion" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="phone">Phonenumber:</label><br>
+                        <input type="tel" class="form-control" [(ngModel)]="student.phone" placeholder="Enter Phonenumber" id="phone" name="phone" pattern="[0-9]{10}" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="studusername">Student Account Username:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="student.studusername" placeholder="Enter Student Account Username" id="studusername" name="studusername" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="studpassword">Student Account New/Current Password:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="student.studpassword" placeholder="Enter Student Account New/Current Password" id="studpassword" name="studpassword" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="email">Email:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="student.email" placeholder="Enter Email" id="email" name="email" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="status">Status:</label><br>
+                        <input type="number" class="form-control" [(ngModel)]="student.status" value="1" id="status" name="status" disabled>
+                      </div><br>
+                      </div>
+                    <input type="submit" class="btn btn-primary" style="width:45%;font-size:30px;background-color:blue;color:white;" value="Register" (click)="studentNow()">
+                    <input type="submit" class="btn btn-success" style="width:45%;font-size:30px;background-color:coral;color:white;" value="Update" (click)="updateStudentNow()"><br>
+                
+                  </div>
+                </form>
+                
+                </div>
+
+                <h3 style="text-align: center;">Search Student By Admission Number</h3>
+                <br>
+                <div class="form-group">
+                    <label for="search">Search By Admno:</label><br>
+                    <input type="number" class="form-control" [(ngModel)]="search.a" placeholder="Search By Admno" id="search" name="search"><br>
+                    <button class="btn btn-info btn-xs" (click)="searchById(search.a)"><span class="glyphicon glyphicon-remove"></span> Search</button><br>
+                  </div><br>
+                  <table class="table table-dark table-responsive">
+                    <tr>
+                      <th>College Name</th>
+                      <th>Admno</th>
+                      <th>Name</th>
+                      <th>Address</th>
+                      <th>Father Name</th>
+                      <th>Mother Name</th>
+                      <th>Course</th>
+                      <th>Standard/Year</th>
+                      <th>Date Admitted</th>
+                      <th>Course Duration</th>
+                      <th>Total Fees</th>
+                      <th>Fees Paid</th>
+                      <th>Balance Fees</th>
+                      <th>Date Of Course Completion</th>
+                      <th>Phone</th>
+                      <th>Student Username</th>
+                      <th>Student Password</th>
+                      <th>Email</th>
+                      <th>Status</th>
+                      <th>Delete</th>
+                    </tr>
+                    <tr >
+                        <td>{{student.collegename}}</td>
+                        <td>{{student.admno}}</td>
+                        <td>{{student.name}}</td>
+                        <td>{{student.address}}</td>
+                        <td>{{student.fathername}}</td>
+                        <td>{{student.mothername}}</td>
+                        <td>{{student.course}}</td>
+                        <td>{{student.stdyear}}</td>
+                        <td>{{student.dateadmitted}}</td>
+                        <td>{{student.courseduration}}</td>
+                        <td>{{student.totalfees}}</td>
+                        <td>{{student.feespaid}}</td>
+                        <td>{{student.balancefees}}</td>
+                        <td>{{student.dateofcoursecompletion}}</td>
+                        <td>{{student.phone}}</td>
+                        <td>{{student.studusername}}</td>
+                        <td>{{student.studpassword}}</td>
+                        <td>{{student.email}}</td>
+                        <td>{{student.status}}</td>
+                        <td class="text-center"><button class="btn btn-danger btn-xs" (click)="delStudent(student.admno)"><span class="glyphicon glyphicon-remove"></span> Delete</button></td>
+                    </tr>
+                </table>
+                <br>
+
+                <h3 style="text-align: center;">List of Students</h3>
+                <br>
+                <button class="btn btn-info " (click)="getStudents(college.collegename)">GET STUDENTS</button><br>
+                <table class="table table-dark table-responsive">
+                  <thead>
+                  <tr>
+                      <th>College Name</th>
+                      <th>Admno</th>
+                      <th>Name</th>
+                      <th>Address</th>
+                      <th>Father Name</th>
+                      <th>Mother Name</th>
+                      <th>Course</th>
+                      <th>Standard/Year</th>
+                      <th>Date Admitted</th>
+                      <th>Course Duration</th>
+                      <th>Total Fees</th>
+                      <th>Fees Paid</th>
+                      <th>Balance Fees</th>
+                      <th>Date Of Course Completion</th>
+                      <th>Phone</th>
+                      <th>Student Username</th>
+                      <th>Student Password</th>
+                      <th>Email</th>
+                      <th>Status</th>
+                      <th>Delete</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let student of students">
+                    <td>{{student.collegename}}</td>
+                    <td>{{student.admno}}</td>
+                    <td>{{student.name}}</td>
+                    <td>{{student.address}}</td>
+                    <td>{{student.fathername}}</td>
+                    <td>{{student.mothername}}</td>
+                    <td>{{student.course}}</td>
+                    <td>{{student.stdyear}}</td>
+                    <td>{{student.dateadmitted}}</td>
+                    <td>{{student.courseduration}}</td>
+                    <td>{{student.totalfees}}</td>
+                    <td>{{student.feespaid}}</td>
+                    <td>{{student.balancefees}}</td>
+                    <td>{{student.dateofcoursecompletion}}</td>
+                    <td>{{student.phone}}</td>
+                    <td>{{student.studusername}}</td>
+                    <td>{{student.studpassword}}</td>
+                    <td>{{student.email}}</td>
+                    <td>{{student.status}}</td>
+                    <td class="text-center"><button class="btn btn-danger btn-xs" (click)="delStudent(student.admno)"><span class="glyphicon glyphicon-remove"></span> Delete</button></td>
+                  </tr>
+                  </tbody>
+              </table><br><br>
+ 
+        </div>
+    </div>
+
