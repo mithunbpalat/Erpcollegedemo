@@ -1,0 +1,195 @@
+<title>Add Timetable</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <div class="container-fluid">
+        <h1 style="text-align: center;font-size: 50px;color:black;">ERP COLLEGE MANAGEMENT</h1><br>
+        <h1 style="text-align: center;font-size: 40px;color:black;">{{college.collegename | uppercase}}</h1><br>
+        <ul class="nav nav-pills nav-justified">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/collegeadminprofile/{{college.cid}}">View Profile And Book Request</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/caaddstudent/{{college.cid}}">Add Student</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/caaddteacher/{{college.cid}}">Add Teacher</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/caaddlibrarian/{{college.cid}}">Add Librarian</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/catimetable/{{college.cid}}">Add Timetable</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/caevent/{{college.cid}}">Add Event</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/collegeadminlogin">Logout</a>
+          </li>
+        </ul><br><br><br>
+        <h3 style="color:maroon;">College Admin {{college.adminusername}} Logged in...</h3>
+        <div style="padding:3% 3%;margin: auto;background-color:lightgoldenrodyellow;">
+        <div class="container-fluid">
+          <h1 style="text-align: center;">ADD TIMETABLE</h1><br>
+          <div class="row">
+          <div class="col-sm-4">
+            <div style="margin:auto;border:2px solid white;border-radius:5px;padding: 10px;">
+              <h3 style="text-align: center;">Timetable Details(All information required*)</h3>
+                <form action="#" post="method">
+                  <div class="form-group">
+                    <label for="timetableid">Timetable Id:</label><br>
+                    <input type="number" class="form-control" [(ngModel)]="timetable.ttid" placeholder="Enter TimeTable Id while updating Only" id="timetableid" name="timetableid">
+                  </div><br>
+                  <div class="form-group">
+                    <label for="examname">Exam Name:</label><br>
+                    <input type="text" class="form-control" [(ngModel)]="timetable.examname" placeholder="Enter Exam Name" id="examname" name="examname" required>
+                  </div><br>  
+                    <div class="form-group">
+                        <label for="course">Course Name:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="timetable.course" placeholder="Enter Course Name" id="course" name="course" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="branch">Branches:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="timetable.branch" placeholder="Enter Branches For which Exam is Conducted" id="branch" name="branch" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="subcode">Subject Code:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="timetable.subcode" placeholder="Enter Subject Code" id="subcode" name="subcode" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="sub">Subject:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="timetable.subject" placeholder="Enter Subject" id="sub" name="sub" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="date">Date Of Exam:</label><br>
+                        <input type="date" class="form-control" [(ngModel)]="timetable.dateofexam" placeholder="Enter Date Of Exam" id="date" name="date" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="day">Day Of Exam:</label><br>
+                        <select name="cars" class="custom-select" [(ngModel)]="timetable.dayofexam">
+                            <option selected>Custom Select Menu</option>
+                            <option value="Sunday">Sunday</option>
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                          </select>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="from">Exam Starts From:</label><br>
+                        <input type="datetime-local" class="form-control" [(ngModel)]="timetable.fromtime" placeholder="Enter Exam Starting Time" id="from" name="from" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="to">Exam Stops At:</label><br>
+                        <input type="datetime-local" class="form-control" [(ngModel)]="timetable.totime" placeholder="Enter Exam Stopping Time" id="to" name="to" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="venue">Exam Venue:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="timetable.venue" placeholder="Enter Exam Venue" id="venue" name="venue" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="collegename">College Name:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="timetable.collegename" placeholder="Enter College Name" id="collegename" name="collegename" required>
+                      </div><br>
+                    <input type="submit" class="btn btn-primary" style="width:45%;font-size:30px;background-color:blue;color:white;" value="Register" (click)="timetableNow()">
+                    <input type="submit" class="btn btn-success" style="width:45%;font-size:30px;background-color:coral;color:white;" value="Update" (click)="updateTimetableNow()"><br>
+                
+                </form>
+                </div>
+              </div><br><br><br><br><br>
+              <div class="col-sm-8">
+                <h3 style="text-align: center;">Search Timetable By Timetable Id</h3>
+                <br>
+                <div class="form-group">
+                    <label for="search">Search By Timetable Id:</label><br>
+                    <input type="number" class="form-control" [(ngModel)]="search.a" placeholder="Search By Timetable Id" id="search" name="search"><br>
+                    <button class="btn btn-info btn-xs" (click)="searchById(search.a)"><span class="glyphicon glyphicon-remove"></span> Search</button><br>
+                  </div><br>
+                  <table class="table table-dark table-responsive">
+                    <tr>
+                        <th>Timetable Id</th>
+                        <th>Exam Name</th>
+                        <th>Course</th>
+                        <th>Branch</th>
+                        <th>Subject Code</th>
+                        <th>Subject</th>
+                        <th>Date Of Exam</th>
+                        <th>Day Of Exam</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Venue</th>
+                        <th>Collegename</th>
+                        <th>Delete</th>
+                    </tr>
+                    <tr >
+                        <td>{{timetable.ttid}}</td>
+                        <td>{{timetable.examname}}</td>
+                        <td>{{timetable.course}}</td>
+                        <td>{{timetable.branch}}</td>
+                        <td>{{timetable.subcode}}</td>
+                        <td>{{timetable.subject}}</td>
+                        <td>{{timetable.dateofexam}}</td>
+                        <td>{{timetable.dayofexam}}</td>
+                        <td>{{timetable.fromtime | date:'shortTime'}}</td>
+                        <td>{{timetable.totime | date:'shortTime'}}</td>
+                        <td>{{timetable.venue}}</td>
+                        <td>{{timetable.collegename}}</td>
+                        <td class="text-center"><button class="btn btn-danger btn-xs" (click)="delTimetable(timetable.ttid)"><span class="glyphicon glyphicon-remove"></span> Delete</button></td>
+                    </tr>
+                </table>
+                <br>
+
+                <h3 style="text-align: center;">Exam Timetable</h3>
+                <br>
+                <button class="btn btn-info " (click)="getTimetable(college.collegename)">GET TIMETABLES</button><br>
+                <table class="table table-dark table-responsive">
+                  <thead>
+                  <tr>
+                    <th>Timetable Id</th>
+                    <th>Exam Name</th>
+                    <th>Course</th>
+                    <th>Branch</th>
+                    <th>Subject Code</th>
+                    <th>Subject</th>
+                    <th>Date Of Exam</th>
+                    <th>Day Of Exam</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Venue</th>
+                    <th>Collegename</th>
+                    <th>Delete</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let timetable of timetables">
+                    <td>{{timetable.ttid}}</td>
+                    <td>{{timetable.examname}}</td>
+                    <td>{{timetable.course}}</td>
+                    <td>{{timetable.branch}}</td>
+                    <td>{{timetable.subcode}}</td>
+                    <td>{{timetable.subject}}</td>
+                    <td>{{timetable.dateofexam}}</td>
+                    <td>{{timetable.dayofexam}}</td>
+                    <td>{{timetable.fromtime | date:'shortTime'}}</td>
+                    <td>{{timetable.totime | date:'shortTime'}}</td>
+                    <td>{{timetable.venue}}</td>
+                    <td>{{timetable.collegename}}</td>
+                    <td class="text-center"><button class="btn btn-danger btn-xs" (click)="delTimetable(timetable.ttid)"><span class="glyphicon glyphicon-remove"></span> Delete</button></td>
+                  </tr>
+                  </tbody>
+              </table><br><br>
+ 
+              </div>
+        </div>
+        </div>
+    </div>

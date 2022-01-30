@@ -1,0 +1,62 @@
+<title>Student View Uploaded Results</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <div class="container-fluid">
+        <h1 style="text-align: center;font-size: 50px;color:black;">ERP COLLEGE MANAGEMENT</h1><br>
+        <h1 style="text-align: center;font-size: 40px;color:black;">{{student.collegename | uppercase}}</h1><br>
+        <ul class="nav nav-pills nav-justified">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/studentprofile/{{student.admno}}">View Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/studentviewbooks/{{student.admno}}">View Books Of College</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/studentviewtimetable/{{student.admno}}">View Timetable</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/studentviewassignments/{{student.admno}}">View Assignments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/studentviewresults/{{student.admno}}">View Uploaded Results</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/studentviewattendance/{{student.admno}}">View Attendance</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/studentviewevents/{{student.admno}}">View Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/studentlogin">Logout</a>
+          </li>
+        </ul><br><br><br>
+        <h3 style="color:maroon;">Student {{student.studusername}} Logged in...</h3>
+        <div style="padding:3% 3%;margin: auto;background-color:lightgoldenrodyellow;">
+        <div class="container-fluid">
+          <h1 style="text-align: center;">VIEW UPLOADED RESULTS</h1><br>
+
+          <div class="card">
+            <div class="card-header">List of Result Files</div>
+            <ul
+              class="list-group list-group-flush"
+              *ngFor="let file of fileInfos | async"
+            >
+              <li class="list-group-item">
+                <a href="{{ file.url }}">{{ file.name }}</a>
+              </li>
+            </ul>
+          </div>
+
+
+
+          </div>
+        </div>
+    </div>

@@ -1,0 +1,160 @@
+<title>Add Attendance</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <div class="container-fluid">
+        <h1 style="text-align: center;font-size: 50px;color:black;">ERP COLLEGE MANAGEMENT</h1><br>
+        <h1 style="text-align: center;font-size: 40px;color:black;">{{teacher.collegename | uppercase}}</h1><br>
+        <ul class="nav nav-pills nav-justified">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/teacherprofile/{{teacher.tid}}">View Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/teacheraddassignment/{{teacher.tid}}">Add Assignment</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/teacheraddattendance/{{teacher.tid}}">Add Attendance</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/teacheruploadresults/{{teacher.tid}}">Upload Results</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/teacherviewevent/{{teacher.tid}}">View Event</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/teacherlogin">Logout</a>
+          </li>
+        </ul><br><br><br>
+        <h3 style="color:maroon;">Teacher {{teacher.teacherusername}} Logged in...</h3>
+        <div style="padding:3% 3%;margin: auto;background-color:lightgoldenrodyellow;">
+        <div class="container-fluid">
+          <h1 style="text-align: center;">ADD ATTENDANCE</h1><br>
+          <div class="row">
+          <div class="col-sm-4">
+            <div style="margin:auto;border:2px solid white;border-radius:5px;padding: 10px;">
+              <h3 style="text-align: center;">Attendance Details(All information required*)</h3>
+                <form action="#" post="method">
+                  <div class="form-group">
+                    <label for="attid">Attendance Id:</label><br>
+                    <input type="number" class="form-control" [(ngModel)]="attendance.attid" placeholder="Enter Attendance Id while updating Only" id="attid" name="attid">
+                  </div><br>
+                  <div class="form-group">
+                    <label for="studentname">Student Name:</label><br>
+                    <input type="text" class="form-control" [(ngModel)]="attendance.studentname" placeholder="Enter Student Name" id="studentname" name="studentname" required>
+                  </div><br>  
+                    <div class="form-group">
+                        <label for="course">Course:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="attendance.course" placeholder="Enter Course" id="course" name="course" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="stdyear">Standard/Year:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="attendance.stdyear" placeholder="Enter Standard/Year" id="stdyear" name="stdyear" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="admno">Admission Number:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="attendance.admno" placeholder="Enter Admission Number" id="admno" name="admno" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="date">Date Of Attendance:</label><br>
+                        <input type="date" class="form-control" [(ngModel)]="attendance.date" placeholder="Enter Date of Attendance" id="date" name="date" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="presence">Presence:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="attendance.presence" placeholder="Enter Presence(Yes/No)" id="presence" name="presence" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="reason">Reason Of Absence:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="attendance.reason" placeholder="Enter Reason Of Absence" id="reason" name="reason" required>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="collegename">College Name:</label><br>
+                        <input type="text" class="form-control" [(ngModel)]="attendance.collegename" placeholder="Enter College Name" id="collegename" name="collegename" required>
+                      </div><br>
+                    <input type="submit" class="btn btn-primary" style="width:45%;font-size:30px;background-color:blue;color:white;" value="Register" (click)="attendanceNow()">
+                    <input type="submit" class="btn btn-success" style="width:45%;font-size:30px;background-color:coral;color:white;" value="Update" (click)="updateAttendanceNow()"><br>
+                
+                </form>
+                </div>
+              </div><br><br><br><br><br>
+              <div class="col-sm-8">
+                <h3 style="text-align: center;">Search Attendance By Attendance Id</h3>
+                <br>
+                <div class="form-group">
+                    <label for="search">Search By Attendance Id:</label><br>
+                    <input type="number" class="form-control" [(ngModel)]="search.a" placeholder="Search By Attendance Id" id="search" name="search"><br>
+                    <button class="btn btn-info btn-xs" (click)="searchById(search.a)"><span class="glyphicon glyphicon-remove"></span> Search</button><br>
+                  </div><br>
+                  <table class="table table-dark table-responsive">
+                    <tr>
+                        <th>Attendance Id</th>
+                        <th>Student Name</th>
+                        <th>Course</th>
+                        <th>Standard/Year</th>
+                        <th>Admission Number</th>
+                        <th>Date</th>
+                        <th>Presence</th>
+                        <th>Reason Of Absence</th>
+                        <th>Collegename</th>
+                        <th>Delete</th>
+                    </tr>
+                    <tr >
+                        <td>{{attendance.attid}}</td>
+                        <td>{{attendance.studentname}}</td>
+                        <td>{{attendance.course}}</td>
+                        <td>{{attendance.stdyear}}</td>
+                        <td>{{attendance.admno}}</td>
+                        <td>{{attendance.date}}</td>
+                        <td>{{attendance.presence}}</td>
+                        <td>{{attendance.reason}}</td>
+                        <td>{{attendance.collegename}}</td>
+                        <td class="text-center"><button class="btn btn-danger btn-xs" (click)="delAttendance(attendance.attid)"><span class="glyphicon glyphicon-remove"></span> Delete</button></td>
+                    </tr>
+                </table>
+                <br>
+
+                <h3 style="text-align: center;">Attendance Details</h3>
+                <br>
+                <button class="btn btn-info " (click)="getAttendance(teacher.collegename)">GET ATTENDANCE</button><br>
+                <table class="table table-dark table-responsive">
+                  <thead>
+                  <tr>
+                    <th>Attendance Id</th>
+                    <th>Student Name</th>
+                    <th>Course</th>
+                    <th>Standard/Year</th>
+                    <th>Admission Number</th>
+                    <th>Date</th>
+                    <th>Presence</th>
+                    <th>Reason Of Absence</th>
+                    <th>Collegename</th>
+                    <th>Delete</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let attendance of attendances">
+                    <td>{{attendance.attid}}</td>
+                    <td>{{attendance.studentname}}</td>
+                    <td>{{attendance.course}}</td>
+                    <td>{{attendance.stdyear}}</td>
+                    <td>{{attendance.admno}}</td>
+                    <td>{{attendance.date}}</td>
+                    <td>{{attendance.presence}}</td>
+                    <td>{{attendance.reason}}</td>
+                    <td>{{attendance.collegename}}</td>
+                    <td class="text-center"><button class="btn btn-danger btn-xs" (click)="delAttendance(attendance.attid)"><span class="glyphicon glyphicon-remove"></span> Delete</button></td>
+                  </tr>
+                  </tbody>
+              </table><br><br>
+ 
+              </div>
+        </div>
+        </div>
+    </div>
+

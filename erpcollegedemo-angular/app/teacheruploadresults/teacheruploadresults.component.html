@@ -1,0 +1,77 @@
+<title>Upload Results</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <div class="container-fluid">
+        <h1 style="text-align: center;font-size: 50px;color:black;">ERP COLLEGE MANAGEMENT</h1><br>
+        <h1 style="text-align: center;font-size: 40px;color:black;">{{teacher.collegename | uppercase}}</h1><br>
+        <ul class="nav nav-pills nav-justified">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/teacherprofile/{{teacher.tid}}">View Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/teacheraddassignment/{{teacher.tid}}">Add Assignment</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/teacheraddattendance/{{teacher.tid}}">Add Attendance</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/teacheruploadresults/{{teacher.tid}}">Upload Results</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/teacherviewevent/{{teacher.tid}}">View Event</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/teacherlogin">Logout</a>
+          </li>
+        </ul><br><br><br>
+        <h3 style="color:maroon;">Teacher {{teacher.teacherusername}} Logged in...</h3>
+        <div style="padding:3% 3%;margin: auto;background-color:lightgoldenrodyellow;">
+        <div class="container-fluid">
+          <h1 style="text-align: center;">UPLOAD RESULTS</h1><br>
+          <h4>Upload Files with Result Name</h4>
+          <div *ngIf="currentFile" class="progress">
+            <div
+              class="progress-bar progress-bar-info progress-bar-striped"
+              role="progressbar"
+              attr.aria-valuenow="{{ progress }}"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              [ngStyle]="{ width: progress + '%' }"
+            >
+              {{ progress }}%
+            </div>
+          </div>
+          
+          <label class="btn btn-default">
+            <input type="file" (change)="selectFile($event)" />
+          </label>
+          
+          <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+            Upload
+          </button>
+          
+          <div class="alert alert-light" role="alert">{{ message }}</div>
+          
+          <div class="card">
+            <div class="card-header">List of Result Files</div>
+            <ul
+              class="list-group list-group-flush"
+              *ngFor="let file of fileInfos | async"
+            >
+              <li class="list-group-item">
+                <a href="{{ file.url }}">{{ file.name }}</a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+        </div>
+    </div>      
